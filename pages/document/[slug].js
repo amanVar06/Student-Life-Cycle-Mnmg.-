@@ -1,6 +1,9 @@
 import React from "react";
+import { useRouter } from "next/router";
 
-const document = () => {
+const Slug = () => {
+  const router = useRouter();
+  const { slug } = router.query;
   return (
     <>
       <nav className="bg-white px-2 sm:px-4 py-2.5 dark:bg-gray-900 fixed w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600">
@@ -51,10 +54,10 @@ const document = () => {
             />
             <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
               <h1 className="text-3xl title-font text-gray-500 tracking-widest">
-                12th Markshet
+                {slug}
               </h1>
               <h2 className="text-gray-900 text-3xl title-font font-medium mb-1">
-                2016
+                Year
               </h2>
               <button className="flex  text-white bg-blue-500 border-0 py-2 px-6 mt-10 focus:outline-none hover:bg-blue-600 rounded">
                 Download
@@ -65,7 +68,6 @@ const document = () => {
               <button className="flex text-white bg-blue-500 border-0 py-2 px-6 mt-10 focus:outline-none hover:bg-blue-600 rounded">
                 Upload New File
               </button>
-              <div className="flex mt-10"></div>
             </div>
           </div>
         </div>
@@ -74,4 +76,4 @@ const document = () => {
   );
 };
 
-export default document;
+export default Slug;

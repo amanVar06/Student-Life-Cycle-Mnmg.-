@@ -103,7 +103,7 @@ const institutestudent = () => {
               <td className="py-4 px-6">
                 {/* <!-- Modal toggle --> */}
                 <a
-                  href="#editUserModal"
+                  href="/document/btech"
                   type="button"
                   data-modal-toggle="editUserModal"
                   className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
@@ -131,7 +131,7 @@ const institutestudent = () => {
               <td className="py-4 px-6">
                 {/* <!-- Modal toggle --> */}
                 <a
-                  href="#editUserModal"
+                  href="/document/12thmarksheet"
                   type="button"
                   data-modal-toggle="editUserModal"
                   className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
@@ -159,8 +159,7 @@ const institutestudent = () => {
               <td className="py-4 px-6">
                 {/* <!-- Modal toggle --> */}
                 <a
-                  href="#"
-                  data-modal-toggle="editUserModal"
+                  href="/document/10thmarksheet"
                   className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                 >
                   Edit
@@ -170,19 +169,19 @@ const institutestudent = () => {
           </tbody>
         </table>
         {/* <!-- Edit user modal --> */}
-        <div
+        {/* <div
           id="editUserModal"
           tabindex="-1"
           aria-hidden="true"
           className=" overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center p-4 w-full md:inset-0 h-modal md:h-full"
         >
           <div className=" relative w-full max-w-2xl h-full md:h-auto">
-            {/* <!-- Modal content --> */}
+             <!-- Modal content --> 
             <form
               action="#"
               className="hidden relative bg-white rounded-lg shadow dark:bg-gray-700"
             >
-              {/* <!-- Modal header --> */}
+              <!-- Modal header --> 
               <div className="flex justify-between items-start p-4 rounded-t border-b dark:border-gray-600">
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
                   Update Document
@@ -206,7 +205,7 @@ const institutestudent = () => {
                   </svg>
                 </button>
               </div>
-              {/* <!-- Modal body --> */}
+              <!-- Modal body -->
               <div className="p-6 space-y-6 ">
                 <div className="col-span-10 sm:col-span-3 my-4">
                   <a href="#" target="_blank">
@@ -241,7 +240,7 @@ const institutestudent = () => {
                   />
                 </div>
               </div>
-              {/* <!-- Modal footer --> */}
+              <!-- Modal footer -->
               <div className="flex items-center p-6 space-x-2 rounded-b border-t border-gray-200 dark:border-gray-600">
                 <button
                   type="submit"
@@ -252,7 +251,7 @@ const institutestudent = () => {
               </div>
             </form>
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   );
