@@ -1,14 +1,85 @@
 import React from "react";
+import Link from "next/link";
+import { useState, useEffect } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/router";
 
 const studentlogin = () => {
+  const [email, setemail] = useState("");
+  const [password, setpassword] = useState("");
   const router = useRouter();
-  const handlesubmit = (e) => {
+  // useEffect(() => {
+  //   if(!localStorage.getItem("curruser")){
+  //     router.push(`${process.env.NEXT_PUBLIC_HOST}/login`);
+  //   }
+  // }, [router.query])
+
+  const handleChange = (e) => {
+    if (e.target.name == "email") {
+      setemail(e.target.value);
+    } else if (e.target.name == "password") {
+      setpassword(e.target.value);
+    }
+  };
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    router.push("/student");
+    const data = { email, password };
+    let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/StudentLogin`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    let response = await res.json();
+    console.log(response);
+    setemail("");
+    setpassword("");
+    console.log(response.success);
+    if (response.success == true) {
+      toast.success("Logged in successfully", {
+        position: "bottom-center",
+        autoClose: 1000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      localStorage.setItem(
+        "curruser",
+        JSON.stringify({ token: response.token, email: response.email })
+      );
+
+      setTimeout(() => {
+        router.push(`${process.env.NEXT_PUBLIC_HOST}/student`);
+      }, 1000);
+    } else {
+      toast.error(response.error, {
+        position: "bottom-center",
+        autoClose: 1000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
   };
   return (
     <section className="bg-gray-50 dark:bg-gray-900">
+      <ToastContainer
+        position="bottom-center"
+        autoClose={1000}
+        hideProgressBar={true}
+        newestOnTop={true}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
         <a
           href="#"
@@ -25,6 +96,8 @@ const studentlogin = () => {
               <div>
                 <input
                   type="email"
+                  value={email}
+                  onChange={handleChange}
                   name="email"
                   placeholder="Email"
                   id="email"
@@ -35,6 +108,8 @@ const studentlogin = () => {
               <div>
                 <input
                   type="password"
+                  value={password}
+                  onChange={handleChange}
                   name="password"
                   id="password"
                   placeholder="Password"
@@ -51,7 +126,7 @@ const studentlogin = () => {
                 </a>
               </div>
               <button
-                onClick={handlesubmit}
+                onClick={handleSubmit}
                 type="submit"
                 className="w-full text-black bg-blue-400 hover:bg-blue-500 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
               >

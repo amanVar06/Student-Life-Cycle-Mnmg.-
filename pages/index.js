@@ -17,16 +17,17 @@ export default function Home() {
               Welcome To Student Master Database
             </h1>
             <p className="text-base leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto text-gray-500s">
-              this app is created to manage all the documents issued to a
+              This app is created to manage all the documents issued to a
               student in his life cyle whether its school certificates, college
               degree etc.
             </p>
             <div className="flex mt-6 justify-center">
-              <div className="w-16 h-1 rounded-full bg-blue-500 inline-flex"></div>
+              <div className="w-full h-1 rounded-full bg-blue-500 inline-flex"></div>
             </div>
+            <h2 className="text-2xl mt-5">Who Are You?</h2>
           </div>
-          <div className="flex flex-wrap sm:-m-4 -mx-4 -mb-10 -mt-4 md:space-y-0 space-y-2">
-            <div className="p-2 md:w-1/3 flex flex-col text-center items-center hover:border-blue-300 hover:border-2">
+          <div className="flex flex-wrap sm:-m-4 -mx-4 -mb-10 -mt-4 md:space-y-0 ">
+            <div className="p-2 md:w-1/3 flex flex-col text-center items-center hover:border-blue-300 hover:border-4">
               <a
                 href="/institutelogin"
                 className="mt-1 text-blue-500 inline-flex items-center"
@@ -42,7 +43,7 @@ export default function Home() {
                 </div>
               </a>
             </div>
-            <div className="p-2 md:w-1/3 flex flex-col text-center items-center hover:border-blue-300 hover:border-2">
+            <div className="p-2 md:w-1/3 flex flex-col text-center items-center hover:border-blue-300 hover:border-4">
               <a
                 href="/govlogin"
                 className="mt-1 text-blue-500 inline-flex items-center"
@@ -57,7 +58,7 @@ export default function Home() {
                 </div>
               </a>
             </div>
-            <div className="p-2 md:w-1/3 flex flex-col text-center items-center hover:border-blue-300 hover:border-2">
+            <div className="p-2 md:w-1/3 flex flex-col text-center items-center hover:border-blue-300 hover:border-4">
               <a
                 href="/studentlogin"
                 className="mt-1 text-blue-500 inline-flex items-center"
