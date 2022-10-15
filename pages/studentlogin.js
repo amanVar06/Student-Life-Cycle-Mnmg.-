@@ -48,7 +48,7 @@ const studentlogin = () => {
         progress: undefined,
       });
       localStorage.setItem(
-        "curruser",
+        'curruser',
         JSON.stringify({ token: response.token, email: response.email })
       );
 

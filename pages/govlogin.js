@@ -14,7 +14,7 @@ const govlogin = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = { GovId };
-    let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/InstLogin`, {
+    let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/govlogin`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -41,7 +41,7 @@ const govlogin = () => {
       );
 
       setTimeout(() => {
-        router.push(`${process.env.NEXT_PUBLIC_HOST}/institute`);
+        router.push(`${process.env.NEXT_PUBLIC_HOST}/search`);
       }, 1000);
     } else {
       toast.error(response.error, {
@@ -56,7 +56,7 @@ const govlogin = () => {
     }
   };
   return (
-    <section className="bg-gray-50 dark:bg-gray-900">
+    <section className="bg-gradient-to-b from-orange-300 to-emerald-300 h-screen">
       <ToastContainer
         position="bottom-center"
         autoClose={1000}

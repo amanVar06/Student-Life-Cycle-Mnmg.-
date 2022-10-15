@@ -1,5 +1,6 @@
 import React from "react";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 const Slug = () => {
   const router = useRouter();
@@ -22,22 +23,22 @@ const Slug = () => {
           >
             <ul className="flex flex-col p-4 mt-4 bg-gray-50 rounded-lg border border-gray-100 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
               <li>
-                <a
+                <Link
                   href="/student"
                   className="block cursor-pointer py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white"
                   aria-current="page"
                 >
                   Home
-                </a>
+                </Link>
               </li>
 
               <li>
-                <a
+                <Link
                   href="/"
                   className="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
                 >
                   Log Out
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -59,15 +60,19 @@ const Slug = () => {
               <h2 className="text-gray-900 text-3xl title-font font-medium mb-1">
                 Year
               </h2>
-              <button className="flex  text-white bg-blue-500 border-0 py-2 px-6 mt-10 focus:outline-none hover:bg-blue-600 rounded">
+              <button className="flex w-52 text-white bg-blue-500 border-0 py-2 px-6 mt-5 focus:outline-none hover:bg-blue-600 rounded">
                 Download
               </button>
-              <button className="flex text-white bg-blue-500 border-0 py-2 px-6 mt-10 focus:outline-none hover:bg-blue-600 rounded">
-                Request Edit
-              </button>
-              <button className="flex text-white bg-blue-500 border-0 py-2 px-6 mt-10 focus:outline-none hover:bg-blue-600 rounded">
-                Upload New File
-              </button>
+              <Link href="mailto:123@gmail.com">
+                <button className="flex w-52 text-white bg-blue-500 border-0 py-2 px-6 mt-5 focus:outline-none hover:bg-blue-600 rounded">
+                  Request Edit
+                </button>
+              </Link>
+              <Link href="/upload">
+                <button className="flex w-52 text-white bg-blue-500 border-0 py-2 px-6 mt-5 focus:outline-none hover:bg-blue-600 rounded">
+                  Upload New Document
+                </button>
+              </Link>
             </div>
           </div>
         </div>
