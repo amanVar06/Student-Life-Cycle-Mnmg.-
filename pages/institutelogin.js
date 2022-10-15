@@ -59,10 +59,14 @@ const institutelogin = () => {
         draggable: true,
         progress: undefined,
       });
+      localStorage.setItem(
+        "curruser",
+        JSON.stringify({ token: response.token, email: response.email })
+      );
     }
   };
   return (
-    <section className="bg-gray-50 dark:bg-gray-900">
+    <section className="bg-gradient-to-b from-orange-300 to-emerald-300 h-screen">
       <ToastContainer
         position="bottom-center"
         autoClose={1000}
@@ -118,6 +122,15 @@ const institutelogin = () => {
               >
                 Sign in
               </button>
+              <p className="text-sm font-light text-black dark:text-gray-400">
+                Don't have an account yet?{" "}
+                <a
+                  href="/InstSignUp"
+                  className="font-medium text-primary-600 hover:underline dark:text-primary-500"
+                >
+                  Sign up
+                </a>
+              </p>
             </form>
           </div>
         </div>

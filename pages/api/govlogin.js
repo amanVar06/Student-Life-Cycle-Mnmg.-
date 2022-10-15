@@ -4,13 +4,13 @@ var jwt = require("jsonwebtoken");
 
 const handler = async (req, res) => {
   if (req.method == "POST") {
-    let user = await Gov.findOne({ uid: req.body.InstId });
+    let user = await Gov.findOne({ GovId: req.body.GovId });
     if (user) {
       var token = jwt.sign(
-        { uid: user.uid, name: user.name },
+        { GovId: user.GovId, name: user.name, roles: { viewer: 1 } },
         process.env.JWT_SECRET
       );
-      res.status(200).json({ success: true, token, uid: user.uid });
+      res.status(200).json({ success: true, token, GovId: user.GovId });
     } else {
       res.status(200).json({ success: false, error: "No user found" });
     }

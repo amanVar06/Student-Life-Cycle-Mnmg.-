@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 const InstituteSchema = new mongoose.Schema(
   {
-    uid: { type: String, required: true },
+    InstId: { type: String, required: true, unique: true },
     name: { type: String, default: "IIITV" },
     password: { type: String, required: true },
   },

@@ -13,7 +13,7 @@ const handler = async (req, res) => {
       console.log(orgpass);
       if (req.body.email == user.email && orgpass == req.body.password) {
         var token = jwt.sign(
-          { email: user.email, name: user.name },
+          { email: user.email, name: user.name, roles: { viewer: 1 } },
           process.env.JWT_SECRET
         );
         res.status(200).json({ success: true, token, email: user.email });

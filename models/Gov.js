@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 const GovSchema = new mongoose.Schema(
   {
-    uid: { type: String, required: true },
+    GovId: { type: String, required: true },
     name: { type: String, default: "Edu" },
   },
   { timestamps: true }

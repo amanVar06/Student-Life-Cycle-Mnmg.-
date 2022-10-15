@@ -1,49 +1,166 @@
 import React from "react";
 import { useRouter } from "next/router";
-const institute = () => {
+import Navbar from "../components/Navbar";
+import Student from "../models/Student";
+import mongoose from "mongoose";
+const institute = (students) => {
   const router = useRouter();
   const Search = (e) => {
     e.preventDefault();
     router.push("/documents");
   };
   return (
-    <section className="bg-gray-50 dark:bg-gray-900">
-      <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-        <a
-          href="#"
-          className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white"
-        >
-          Student Master Database
-        </a>
-        <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
-          <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-            <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-              Student Search
-            </h1>
-            <form className="space-y-4 md:space-y-6" action="#">
-              <div>
-                <input
-                  type="text"
-                  name="Uid"
-                  placeholder="Unique ID"
-                  id="Uid"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  required=""
-                />
-              </div>
-              <button
-                onClick={Search}
-                type="submit"
-                className="w-full text-black bg-blue-400 hover:bg-blue-500 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+    <>
+      <Navbar />
+      <div className="overflow-x-auto relative mt-20 shadow-md sm:rounded-lg p-5 m-5">
+        <table className="w-full py-1 px-3 text-sm text-left text-gray-500 dark:text-gray-400">
+          <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+              <th scope="col" className="py-3 px-6">
+                Roll No.
+              </th>
+              <th scope="col" className="py-3 px-6">
+                Name
+              </th>
+              <th scope="col" className="py-3 px-6">
+                UID
+              </th>
+              <th scope="col" className="py-3 px-6">
+                Documents
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {/* {students.map((item) => {
+              return (
+                <tr
+                  key={item._id}
+                  className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+                >
+                  <th
+                    scope="row"
+                    className="flex items-center py-4 px-6 text-gray-900 whitespace-nowrap dark:text-white"
+                  >
+                    <div className="pl-2">
+                      <div className="text-base font-semibold">{item._id}</div>
+                    </div>
+                  </th>
+
+                  <td className="py-4 px-6">
+                    <div className="flex items-center">{item.name}</div>
+                  </td>
+                  <td className="py-4 px-6">
+                    <div className="flex items-center">{item.email}</div>
+                  </td>
+                  <td className="py-4 px-6">
+                    <a
+                      href="/documents?uid=123456789"
+                      type="button"
+                      data-modal-toggle="editUserModal"
+                      className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                    >
+                      Documents
+                    </a>
+                  </td>
+                </tr>
+              );
+            })} */}
+            <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+              <th
+                scope="row"
+                className="flex items-center py-4 px-6 text-gray-900 whitespace-nowrap dark:text-white"
               >
-                Search
-              </button>
-            </form>
-          </div>
-        </div>
+                <div className="pl-2">
+                  <div className="text-base font-semibold">2</div>
+                </div>
+              </th>
+
+              <td className="py-4 px-6">
+                <div className="flex items-center">Aditya Priyanshu</div>
+              </td>
+              <td className="py-4 px-6">
+                <div className="flex items-center">123456789963</div>
+              </td>
+              <td className="py-4 px-6">
+                <a
+                  href="/documents?uid=123456789"
+                  type="button"
+                  data-modal-toggle="editUserModal"
+                  className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                >
+                  Documents
+                </a>
+              </td>
+            </tr>
+            <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+              <th
+                scope="row"
+                className="flex items-center py-4 px-6 text-gray-900 whitespace-nowrap dark:text-white"
+              >
+                <div className="pl-2">
+                  <div className="text-base font-semibold">3</div>
+                </div>
+              </th>
+
+              <td className="py-4 px-6">
+                <div className="flex items-center">Abhishek kumar</div>
+              </td>
+              <td className="py-4 px-6">
+                <div className="flex items-center">123456789964</div>
+              </td>
+              <td className="py-4 px-6">
+                <a
+                  href="/documents?uid=123456789"
+                  type="button"
+                  data-modal-toggle="editUserModal"
+                  className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                >
+                  Documents
+                </a>
+              </td>
+            </tr>
+            <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+              <th
+                scope="row"
+                className="flex items-center py-4 px-6 text-gray-900 whitespace-nowrap dark:text-white"
+              >
+                <div className="pl-2">
+                  <div className="text-base font-semibold">4</div>
+                </div>
+              </th>
+
+              <td className="py-4 px-6">
+                <div className="flex items-center">Aman Varshney</div>
+              </td>
+              <td className="py-4 px-6">
+                <div className="flex items-center">123456789965</div>
+              </td>
+              <td className="py-4 px-6">
+                <a
+                  href="/documents?uid=123456789"
+                  type="button"
+                  data-modal-toggle="editUserModal"
+                  className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                >
+                  Documents
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-    </section>
+    </>
   );
 };
+export async function getServerSideProps(context) {
+  if (!mongoose.connections[0].readyState) {
+    await mongoose.connect(process.env.MONGO_URI);
+  }
+  let students = await Student.find({});
+
+  return {
+    props: { students: JSON.parse(JSON.stringify(students)) }, // will be passed to the page component as props
+  };
+}
 
 export default institute;

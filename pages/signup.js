@@ -44,9 +44,7 @@ const signup = () => {
     });
     let response = await res.json();
     console.log(response);
-    if (response.success) {
-      router.push("/student");
-
+    if (response.success == true) {
       setname("");
       setemail("");
       setpassword("");
@@ -62,10 +60,13 @@ const signup = () => {
         draggable: true,
         progress: undefined,
       });
+      setTimeout(() => {
+        router.push("/student");
+      }, 1000);
     }
   };
   return (
-    <>
+    <section className="bg-gradient-to-b from-orange-300 to-emerald-300 h-screen w-screen ">
       <ToastContainer
         position="bottom-center"
         autoClose={1000}
@@ -77,7 +78,7 @@ const signup = () => {
         draggable
         pauseOnHover
       />
-      <div className="text-center my-10">
+      <div className="text-center py-10">
         <h1 className="sm:text-3xl text-2xl font-medium title-font text-gray-900 mb-4">
           Welcome To Student Master Database
         </h1>
@@ -95,7 +96,7 @@ const signup = () => {
             required=""
           />
         </div>
-        <div className="grid gap-6 mb-6 md:grid-cols-2 p-5 m-5">
+        <div className="grid gap-6 mb-6 md:grid-cols-2 px-5 mx-5">
           <div>
             <input
               type="number"
@@ -171,12 +172,12 @@ const signup = () => {
         <button
           onClick={handleSubmit}
           type="submit"
-          className="text-white mx-10 px-10 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          className="text-white mx-10 p-10 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
         >
           Submit
         </button>
       </form>
-    </>
+    </section>
   );
 };
 
